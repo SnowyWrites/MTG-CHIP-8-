@@ -1,0 +1,46 @@
+{
+  "name": "mtg-engine-chip8",
+  "version": "1.0.0",
+  "description": "CHIP-8 development environment",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "keywords": [],
+  "author": "SnowyFoxPhantom",
+  "license": "MIT",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^11.15.1",
+      "onFail": "download"
+    }
+  },
+  "devDependencies": {
+    "electron": "^43.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.snowyfoxphantom.chip8engine",
+    "productName": "MTG Engine (CHIP-8)",
+    "linux": {
+      "target": "AppImage",
+      "category": "Development"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "src/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "emulator/",
+        "to": "emulator/",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ]
+  }
+}

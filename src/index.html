@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles.css">
+  
+  <title>CHIP-8 Engine</title>
+</head>
+
+<body>
+  <div class="topbar">
+    <h2>MTG (CHIP-8)</h2>
+    <button id="newProjectBtn">New Project</button>
+    <button id="openProjectBtn">Open Project</button>
+    <span id="projectName" style="color: var(--text-muted); font-size: 0.85em;"></span>
+  </div>
+
+  <!--CONSTRUCTION PANELS-->
+  <div class="constructionZone">
+    <div class="sidebar">
+
+      <!--FILE BROWSER-->
+      <div class="fileBrowser" id="fileBrowser"></div>
+
+      <div class="recentProjects" id="recentProjects">
+        <h3>Recent</h3>
+      </div>
+
+      <!--ROM LAUNCHER-->
+      <div class="launchPad">
+        <h2>CHIP-8 Output</h2>
+
+        <button id="launchBtn">Launch ROM</button>
+        <button id="stopBtn">Stop</button>
+
+        <div id="stats">
+          <p>FPS: <span id="fps">--</span></p>
+          <p>Cycles/sec: <span id="cycles">--</span></p>
+          <p>ROM: <span id="rom">--</span></p>
+          <p>PC: <span id="pc">--</span></p>
+          <p>Sound: <span id="sound">--</span></p>
+        </div>
+      </div><!--launchpad-->
+    </div><!--sidebar-->
+
+    <div class="mainWorkspace">
+      <div class="screenPreview">
+        <canvas id="previewCanvas" width="64" height="32"></canvas>
+      </div>
+
+      <!--SCRIPTING EDITOR-->
+      <div class="scriptEditor">
+        <div class="scriptEditorHeader">
+          <span>Script Editor</span>
+          <button id="compileBtn">Compile</button>
+        </div>
+        <textarea id="scriptInput" placeholder="# Write your CHIP-8 script here...
+          let x = 10;
+          let y = 10;
+          draw man at x, y;">
+        </textarea>
+        <div id="tokenOutput"></div>
+        <div id="debugPanel"></div>
+      </div>
+
+      <!--SPRITE EDITOR-->
+      <div class="spriteEditor">
+        <div class="spriteEditorHeader">
+          <span>Sprite Editor</span>
+          <input type="text" id="spriteName" placeholder="sprite name..." />
+          <button id="saveSpriteBtn">Save</button>
+          <button id="clearSpriteBtn">Clear</button>
+        </div>
+        <div class="spriteGrid" id="spriteGrid"></div>
+        <div class="spriteBytes" id="spriteBytes"></div>
+      </div><!--sprite editor-->
+    </div><!--main workspace-->
+  </div><!--constructions zone-->
+
+  <!--SCRIPTS-->
+  <script src="compiler/tokenizer.js"></script>
+  <script src="compiler/parser.js"></script>
+  <script src="compiler/codegen.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
